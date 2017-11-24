@@ -7,13 +7,13 @@
   >
   <label for="{{uniqId}}" class="checkbox-label">{{label}}</label>
   <a href="{{ASSETS_URL+'/terms_and_conditions.txt'}}" target="_blank">{{linkText}}</a>
-  <span
-    *ngIf="submitted && !form.get(control).valid"
-    class="help-block"
-  >
-    <span
-      *ngIf="form.get(control).hasError('pattern')">
-      {{'validation.required' | translate}}
-    </span>
-  </span>
+  <!--<span-->
+    <!--*ngIf="submitted && !form.get(control).valid"-->
+    <!--class="help-block"-->
+  <!--&gt;-->
+    <!--<span-->
+      <!--*ngIf="form.get(control).hasError('pattern')">-->
+      <!--{{'validation.required' | translate}}-->
+    <!--</span>-->
+  <!--</span>-->
 </div>

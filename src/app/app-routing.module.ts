@@ -5,7 +5,7 @@ const appRoutes: Routes = [
   { path: '', loadChildren: './auth/auth.module#AuthModule' },
 
   // Handle all other routes
-  { path: '**', redirectTo: '/' },
+  { path: '**', redirectTo: '/sign-in' },
 ];
 
 @NgModule({

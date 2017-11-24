@@ -9,14 +9,14 @@
     [placeholder]="placeholder"
     [formControlName]="control"
   ></my-date-picker>
-  <span *ngIf="submitted && !form.get(control).valid && !errorsHide" class="help-block">
-    <span *ngIf="form.get(control).hasError('required')">
-      {{'validation.required' | translate}}
-    </span>
-    <span
-      *ngIf="!form.get(control).hasError('required') && form.get(control).hasError('notBeInFuture')"
-    >
-      {{'validation.notBeInFuture' | translate}}
-    </span>
-  </span>
+  <!--<span *ngIf="submitted && !form.get(control).valid && !errorsHide" class="help-block">-->
+    <!--<span *ngIf="form.get(control).hasError('required')">-->
+      <!--{{'validation.required' | translate}}-->
+    <!--</span>-->
+    <!--<span-->
+      <!--*ngIf="!form.get(control).hasError('required') && form.get(control).hasError('notBeInFuture')"-->
+    <!--&gt;-->
+      <!--{{'validation.notBeInFuture' | translate}}-->
+    <!--</span>-->
+  <!--</span>-->
 </div>

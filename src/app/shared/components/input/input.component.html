@@ -13,60 +13,49 @@
     [attr.maxLength]="maxLength?maxLength:null"
     [attr.disabled]="disabled ? '':null"
   >
-  <input
-    *ngIf="currency"
-    class="form-control"
-    [type]="type"
-    [attr.placeholder]="placeholder"
-    [formControlName]="control"
-    [attr.maxLength]="maxLength?maxLength:null"
-    [attr.disabled]="disabled ? '':null"
-    currencyMask
-    [options]="options"
-  >
-  <span
-    *ngIf="submitted && !form.get(control).valid && !errorsHide"
-    class="help-block"
-  >
-    <span
-      *ngIf="form.get(control).hasError('required')">
-      {{'validation.required' | translate}}
-    </span>
-    <span
-      *ngIf="!form.get(control).hasError('required') && form.get(control).hasError('email')">
-      {{'validation.email' | translate}}
-    </span>
-    <span
-      *ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('email') && form.get(control).hasError('minlength')">
-          {{'validation.minlength' | translate | replace:"@count@":form.get(control).errors['minlength']['requiredLength']}}
-    </span>
-    <span
-      *ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('email') && !form.get(control).hasError('minlength') && form.get(control).hasError('maxlength')">
-      {{'validation.maxlength' | translate | replace:"@count@":form.get(control).errors['maxlength']['requiredLength']}}
-    </span>
-    <span
-      *ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('email') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && form.get(control).hasError('noSpace')">
-      {{'validation.noSpace' | translate}}
-    </span>
-    <span
-      *ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && !form.get(control).hasError('noSpace') && form.get(control).hasError('passwordMismatch')">
-      {{'validation.passwordsMatch' | translate }}
-    </span>
-    <span
-      *ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && !form.get(control).hasError('noSpace') && !form.get(control).hasError('passwordMismatch') && form.get(control).hasError('password')">
-      {{'validation.password' | translate }}
-    </span>
-    <span
-      *ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && !form.get(control).hasError('noSpace') && !form.get(control).hasError('passwordMismatch') && !form.get(control).hasError('password') && form.get(control).hasError('vat')">
-      {{'validation.vat' | translate }}
-    </span>
-    <span
-      *ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && !form.get(control).hasError('noSpace') && !form.get(control).hasError('passwordMismatch') && !form.get(control).hasError('password') && !form.get(control).hasError('vat') && form.get(control).hasError('companyNumber')">
-      {{'validation.companyNumber' | translate }}
-    </span>
-    <span
-      *ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && !form.get(control).hasError('noSpace') && !form.get(control).hasError('passwordMismatch') && !form.get(control).hasError('password') && !form.get(control).hasError('vat') && !form.get(control).hasError('companyNumber') && form.get(control).hasError('positive')">
-      {{'validation.positive' | translate }}
-    </span>
-  </span>
+  <!--<span-->
+    <!--*ngIf="submitted && !form.get(control).valid && !errorsHide"-->
+    <!--class="help-block"-->
+  <!--&gt;-->
+    <!--<span-->
+      <!--*ngIf="form.get(control).hasError('required')">-->
+      <!--{{'validation.required' | translate}}-->
+    <!--</span>-->
+    <!--<span-->
+      <!--*ngIf="!form.get(control).hasError('required') && form.get(control).hasError('email')">-->
+      <!--{{'validation.email' | translate}}-->
+    <!--</span>-->
+    <!--<span-->
+      <!--*ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('email') && form.get(control).hasError('minlength')">-->
+          <!--{{'validation.minlength' | translate | replace:"@count@":form.get(control).errors['minlength']['requiredLength']}}-->
+    <!--</span>-->
+    <!--<span-->
+      <!--*ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('email') && !form.get(control).hasError('minlength') && form.get(control).hasError('maxlength')">-->
+      <!--{{'validation.maxlength' | translate | replace:"@count@":form.get(control).errors['maxlength']['requiredLength']}}-->
+    <!--</span>-->
+    <!--<span-->
+      <!--*ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('email') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && form.get(control).hasError('noSpace')">-->
+      <!--{{'validation.noSpace' | translate}}-->
+    <!--</span>-->
+    <!--<span-->
+      <!--*ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && !form.get(control).hasError('noSpace') && form.get(control).hasError('passwordMismatch')">-->
+      <!--{{'validation.passwordsMatch' | translate }}-->
+    <!--</span>-->
+    <!--<span-->
+      <!--*ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && !form.get(control).hasError('noSpace') && !form.get(control).hasError('passwordMismatch') && form.get(control).hasError('password')">-->
+      <!--{{'validation.password' | translate }}-->
+    <!--</span>-->
+    <!--<span-->
+      <!--*ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && !form.get(control).hasError('noSpace') && !form.get(control).hasError('passwordMismatch') && !form.get(control).hasError('password') && form.get(control).hasError('vat')">-->
+      <!--{{'validation.vat' | translate }}-->
+    <!--</span>-->
+    <!--<span-->
+      <!--*ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && !form.get(control).hasError('noSpace') && !form.get(control).hasError('passwordMismatch') && !form.get(control).hasError('password') && !form.get(control).hasError('vat') && form.get(control).hasError('companyNumber')">-->
+      <!--{{'validation.companyNumber' | translate }}-->
+    <!--</span>-->
+    <!--<span-->
+      <!--*ngIf="!form.get(control).hasError('required') && !form.get(control).hasError('minlength') && !form.get(control).hasError('maxlength') && !form.get(control).hasError('noSpace') && !form.get(control).hasError('passwordMismatch') && !form.get(control).hasError('password') && !form.get(control).hasError('vat') && !form.get(control).hasError('companyNumber') && form.get(control).hasError('positive')">-->
+      <!--{{'validation.positive' | translate }}-->
+    <!--</span>-->
+  <!--</span>-->
 </div>

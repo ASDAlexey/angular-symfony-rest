@@ -16,7 +16,6 @@ import { RadioItemComponent } from './components/radio/radio-item/radio-item.com
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalService } from './services/modal.service';
 import { ConfirmDirective } from './directives/confirm.directive';
-import { ReceiptTemplateFilter } from './pipes/receipt-template.filter';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { MyDatePickerModule } from 'mydatepicker';
 
@@ -36,7 +35,6 @@ const services = [
 
 const pipes = [
   ReplacePipe,
-  ReceiptTemplateFilter,
 ];
 
 const components = [

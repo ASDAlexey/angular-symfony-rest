@@ -45,10 +45,7 @@ import { AppRoutingModule } from './app-routing.module';
     RequestService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true },
-    {
-      provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor
-      , multi: true
-    },
+    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

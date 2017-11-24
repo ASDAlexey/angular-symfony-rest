@@ -29,13 +29,13 @@
       [innerHTML]="item[text]"
     ></option>
   </select>
-  <span
-    *ngIf="submitted && !form.get(control).valid"
-    class="help-block"
-  >
-    <span
-      *ngIf="form.get(control).hasError('required')">
-      {{'validation.required' | translate}}
-    </span>
-  </span>
+  <!--<span-->
+    <!--*ngIf="submitted && !form.get(control).valid"-->
+    <!--class="help-block"-->
+  <!--&gt;-->
+    <!--<span-->
+      <!--*ngIf="form.get(control).hasError('required')">-->
+      <!--{{'validation.required' | translate}}-->
+    <!--</span>-->
+  <!--</span>-->
 </div>

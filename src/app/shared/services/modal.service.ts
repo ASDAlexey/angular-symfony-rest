@@ -18,7 +18,7 @@ export class ModalService {
     this.modals = _.without(this.modals, this.findModal(el));
   }
 
-  modal(el: ModalComponent, data: ReceiptModel | null) {
+  modal(el: ModalComponent, data: any | null) {
     el.data = data;
     return this.findModal(el);
   }
