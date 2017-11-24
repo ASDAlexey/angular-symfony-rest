@@ -1,0 +1,227 @@
+.diagram {
+  @include max-screen(768px) {
+    width: 100%;
+  }
+
+  &-header {
+    padding: 0 0 50px 10px;
+    @include after();
+
+    @include max-screen(1400px) {
+      padding-bottom: 20px;
+    }
+
+    @include max-screen(1000px) {
+      padding-bottom: 15px;
+    }
+
+    &__title {
+      float: left;
+      font-size: 20px;
+      color: #23465a;
+      margin-top: -3px;
+
+      @include max-screen(1400px) {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      @include max-screen(1000px) {
+        padding-bottom: 40px;
+      }
+    }
+
+    &__buttons {
+      float: right;
+
+      @include max-screen(1400px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #eef1f6;
+    shape-rendering: crispEdges;
+  }
+
+  .axis path.domain {
+    stroke: none;
+  }
+
+  .axis text {
+    font: 16px sans-serif;
+
+    @include max-screen(1400px) {
+      font-size: 14px;
+    }
+
+    @include max-screen(1200px) {
+      font-size: 12px;
+    }
+
+    @include max-screen(1000px) {
+      font-size: 10px;
+    }
+
+    @include max-screen(800px) {
+      font-size: 8px;
+    }
+  }
+
+  .x.axis text {
+    fill: #50646f;
+  }
+
+  .y.axis text {
+    fill: #94b0bb;
+  }
+
+  .loss__bar {
+    fill: #5a30d0;
+  }
+
+  .turnover__bar {
+    fill: #d7dfe2;
+  }
+
+  .profit__bar {
+    fill: #ff864d;
+  }
+}
+
+.wrapper-diagram {
+  .add-receipt {
+    text-decoration: none;
+    display: block;
+    float: right;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background-color: #ff9b5d;
+    margin-top: -22px;
+    text-align: center;
+    line-height: 52px;
+    font-size: 27px;
+    color: $white;
+  }
+
+  .legend {
+    float: right;
+
+    &__item {
+      display: inline-block;
+      vertical-align: top;
+      padding-left: 32px;
+      font-size: 14px;
+      margin-right: 49px;
+      color: #23465a;
+      position: relative;
+      z-index: 0;
+
+      &_turnover::after {
+        background-color: #d5e0e4;
+      }
+
+      &_profit::after {
+        background-color: #ff9f52;
+      }
+
+      &_loss::after {
+        background-color: #5a40d7;
+      }
+
+      &::after {
+        content: '';
+        width: 18px;
+        height: 18px;
+        border-radius: 3px;
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        top: 50%;
+        margin-top: -9px;
+      }
+    }
+  }
+}
+
+.list-info {
+  white-space: nowrap;
+  padding-bottom: 30px;
+  margin-top: 21px;
+  font-size: 0;
+
+  &__item {
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33% - 18px);
+    height: 214px;
+    margin-left: 33px;
+    background-color: $white;
+    position: relative;
+    z-index: 0;
+
+    @include max-screen(800px) {
+      width: 100%;
+      display: block;
+      margin-left: 0;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    > div {
+      padding-left: 9%;
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      left: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+
+      @include max-screen(800px) {
+        padding-left: 0;
+      }
+
+      > span {
+        display: block;
+
+        &:first-child {
+          font-size: 22px;
+          margin-bottom: 40px;
+          color: #637f8b;
+
+          @include max-screen(1500px) {
+            font-size: 20px;
+            margin-bottom: 30px;
+          }
+
+          @include max-screen(1300px) {
+            font-size: 16px;
+            margin-bottom: 20px;
+          }
+        }
+
+        &:nth-child(2) {
+          font-size: 40px;
+          color: #82b0c0;
+
+          @include max-screen(1500px) {
+            font-size: 34px;
+          }
+
+          @include max-screen(1300px) {
+            font-size: 28px;
+          }
+        }
+      }
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

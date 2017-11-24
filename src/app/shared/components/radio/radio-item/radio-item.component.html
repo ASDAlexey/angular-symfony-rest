@@ -1,0 +1,17 @@
+<div [formGroup]="form" class="radio" [ngClass]="{'radio__switcher':switcher}">
+  <label
+    class="radio__label"
+    [for]="uniqId"
+    [ngClass]="{'checked':form.get('sort_by').value === value}"
+  >
+    <span class="radio__label-text" [innerHTML]="label"></span>
+  </label>
+  <input
+    [id]="uniqId"
+    class="form-control"
+    type="radio"
+    [formControlName]="control"
+    [value]="value"
+    [checked]="form.get('sort_by').value === value"
+  >
+</div>

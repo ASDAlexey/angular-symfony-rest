@@ -1,0 +1,22 @@
+.preloader-logo {
+  position: absolute;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  background-color: $gray;
+  transition: .3s opacity;
+
+  &.loaded {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__img {
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,0 +1,45 @@
+@mixin dibt() {
+  display: inline-block;
+  vertical-align: top;
+}
+
+@mixin dibm() {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin dibb() {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+@mixin fr() {
+  float: right;
+}
+
+@mixin fl() {
+  float: left;
+}
+
+@mixin after() {
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+@mixin aa($zindex:0) {
+  position: absolute;
+  z-index: $zindex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//@mixin nu($size:14px, $fw:400, $lh:1) {
+//  font-family: Nunito Sans, Helvetica, Arial, sans-serif;
+//  line-height: $lh;
+//  font-weight: $fw;
+//  font-size: $size;
+//}

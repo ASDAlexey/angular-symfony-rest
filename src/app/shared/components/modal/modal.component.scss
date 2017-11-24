@@ -1,0 +1,72 @@
+@import "../../../../assets/styles/imports/mixins";
+@import "../../../../assets/styles/imports/variables";
+@import "../../../../assets/styles/imports/media-queries";
+
+.app-modal {
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s opacity;
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+
+    .modal-wrapper {
+      .modal-content {
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+    }
+
+    .modal-content {
+      pointer-events: auto !important;
+      opacity: 1 !important;
+    }
+
+    .modal-background {
+      opacity: .75;
+    }
+  }
+
+  .modal-wrapper {
+    position: fixed;
+    z-index: 901;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    pointer-events: none;
+
+    &::before {
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      content: "";
+    }
+
+    .modal-content {
+      opacity: 0;
+      border-radius: 6px;
+      width: 600px;
+      max-width: 90%;
+      display: inline-block;
+      vertical-align: middle;
+      overflow-y: auto;
+      max-height: 100%;
+      pointer-events: none;
+    }
+  }
+
+  .modal-background {
+    transition: .3s opacity;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    z-index: 900;
+  }
+}

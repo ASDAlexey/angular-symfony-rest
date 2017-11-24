@@ -1,0 +1,41 @@
+<div class="form-group form-block" [formGroup]="form" *ngIf="list && list.length">
+  <label *ngIf="label" [innerHTML]="label"></label>
+  <select
+    *ngIf="!isObject"
+    class="form-control"
+    [formControlName]="control"
+  >
+    <option *ngIf="emptyOption" [innerHTML]="emptyOption"></option>
+    <option
+      [selected]="item === form.get(control).value"
+      *ngFor="let item of list"
+      [innerHTML]="item"
+    ></option>
+  </select>
+  <select
+    *ngIf="isObject"
+    class="form-control"
+    [formControlName]="control"
+  >
+    <option
+      *ngIf="emptyOption"
+      value=""
+      [innerHTML]="emptyOption"
+    ></option>
+    <option
+      [selected]="item[value] === form.get(control)[value]"
+      *ngFor="let item of list"
+      [value]="item[value]"
+      [innerHTML]="item[text]"
+    ></option>
+  </select>
+  <span
+    *ngIf="submitted && !form.get(control).valid"
+    class="help-block"
+  >
+    <span
+      *ngIf="form.get(control).hasError('required')">
+      {{'validation.required' | translate}}
+    </span>
+  </span>
+</div>

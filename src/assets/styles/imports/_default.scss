@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  margin: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+  @media (max-width: 320px) {
+    min-width: 320px;
+  }
+}
+
+body {
+  position: relative;
+  box-sizing: border-box;
+}
+
+input[type="reset"] {
+  display: none;
+}
+
+output {
+  padding: 0;
+}
+
+button,
+a,
+select {
+  cursor: pointer;
+  outline: none;
+  transition: background .5s;
+  color: #337ab7;
+
+  &:active,
+  &:focus {
+    outline: none;
+    color: #337ab7;
+  }
+}
+
+*[btn-type] {
+  outline: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+li {
+  list-style: none;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+button,
+a {
+  border: none;
+  background: none;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a,
+button,
+input[type="checkbox"] {
+  &:focus,
+  &:active {
+    outline: none !important;
+  }
+}
+
+figure,
+figcaption {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.disable-hover,
+.disable-hover * {
+  pointer-events: none !important;
+}
+
+textarea {
+  outline: none;
+}
+
+.hide-block {
+  display: none;
+}
+
+input:-webkit-autofill,
+input:focus:-webkit-autofill {
+  transition: 0s box-shadow;
+  box-shadow: 0 0 0 1000px #fff inset;
+}
+
+.hidden-input {
+  display: none;
+}
+
+::-ms-clear {
+  display: none;
+}
+
+a[disabled],
+button[disabled] {
+  opacity: .65 !important;
+
+  small {
+    color: #ccc !important;
+  }
+}
+
+input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  cursor: pointer;
+}
+
+html.mobile a:hover,
+html.tablet a:hover {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+a[routerlink] {
+  cursor: pointer;
+}
