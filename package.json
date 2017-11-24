@@ -5,7 +5,9 @@
   "scripts": {
     "serve:hmr": "ng serve --hmr -e=hmr -sm -ec",
     "serve:prod": "ng serve --prod",
-    "build:prod": "ng build --prod --aot && node compress.js"
+    "build": "ng build --prod --aot && node compress.js",
+    "build:dev": "sh ./build.sh dev-build dev",
+    "build:stage": "sh ./build.sh stage-build stage"
   },
   "private": true,
   "dependencies": {
