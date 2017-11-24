@@ -11,6 +11,7 @@ import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 import { RequestInterceptor } from './interceptors/request.interceptor';
 import { LayoutsModule } from './layouts/layouts.module';
 import { AppRoutingModule } from './app-routing.module';
+import { MobileDetectDirective } from './shared/directives/mobile-detect.directive';
 
 // export function metaFactory(translate: TranslateService): MetaLoader {
 //   return new MetaStaticLoader({
@@ -24,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
+    MobileDetectDirective,
   ],
   imports: [
     BrowserModule,

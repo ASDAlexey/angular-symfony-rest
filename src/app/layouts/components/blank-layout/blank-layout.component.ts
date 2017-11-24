@@ -17,6 +17,6 @@ export class BlankLayoutComponent {
   constructor(private router: Router) {
     this.isSignInPage = BlankLayoutComponent.checkUrl(_.get(router, 'routerState.snapshot.url'));
 
-    document.querySelector('.preloader-logo').classList.add('loaded');
+    document.querySelector('.preloader').classList.add('loaded');
   }
 }

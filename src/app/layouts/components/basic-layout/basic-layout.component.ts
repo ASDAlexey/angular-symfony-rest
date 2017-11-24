@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class BasicLayoutComponent {
   constructor(private router: Router) {
-    document.querySelector('.preloader-logo').classList.add('loaded');
+    document.querySelector('.preloader').classList.add('loaded');
   }
 
   logout() {

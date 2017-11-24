@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedConstants } from './shared.constant';
 import { ButtonComponent } from './components/button/button.component';
-import { MobileDetectDirective } from './directives/mobile-detect.directive';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { InputComponent } from './components/input/input.component';
 import { ReplacePipe } from './pipes/replace.pipe';
@@ -41,7 +40,6 @@ const components = [
   InputComponent,
   CheckboxComponent,
   SelectComponent,
-  MobileDetectDirective,
   ButtonComponent,
   DatePickerComponent,
   RadioComponent,

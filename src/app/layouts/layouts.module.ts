@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 
 import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
 import { BasicLayoutComponent } from './components/basic-layout/basic-layout.component';
-import { DetectBlankLayoutDirective } from '../shared/directives/detect-blank-layout.directive';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 
@@ -11,7 +10,6 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     BlankLayoutComponent,
     BasicLayoutComponent,
-    DetectBlankLayoutDirective,
   ],
   imports: [
     CommonModule,
