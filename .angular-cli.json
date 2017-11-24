@@ -19,9 +19,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootstrap/scss/bootstrap.scss",
+        "../node_modules/jquery-confirm/dist/jquery-confirm.min.css",
+        "../node_modules/ngx-toastr/toastr.css",
         "styles.scss"
       ],
-      "scripts": [ ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/jquery-confirm/dist/jquery-confirm.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
