@@ -1,38 +1,31 @@
 <div class="auth">
-  <div>
-    auth
-    <!--<h1 class="auth-title">{{'sign-in.title' | translate}}</h1>-->
-    <!--<form-->
-      <!--class="form"-->
-      <!--role="form"-->
-      <!--[formGroup]="signInForm"-->
-      <!--(ngSubmit)="onSubmit()"-->
-      <!--[ngClass]="{submited:submitted}"-->
-    <!--&gt;-->
-      <!--<app-input-->
-        <!--type="email"-->
-        <!--[form]="signInForm"-->
-        <!--[submitted]="submitted"-->
-        <!--control="email"-->
-        <!--placeholder="{{'sign-in.form.email' | translate}}"-->
-      <!--&gt;</app-input>-->
-      <!--<app-input-->
-        <!--type="password"-->
-        <!--[form]="signInForm"-->
-        <!--[submitted]="submitted"-->
-        <!--control="password"-->
-        <!--placeholder="{{'sign-in.form.password' | translate}}"-->
-      <!--&gt;</app-input>-->
-      <!--<p class="form-group">-->
-        <!--<a [routerLink]="['/forgot-password']">{{'sign-in.forgot_password' | translate}}</a>-->
-      <!--</p>-->
-      <!--<div class="text-center form-group">-->
-        <!--<app-button>{{'sign-in.form.login_btn' | translate}}</app-button>-->
-      <!--</div>-->
-      <!--<p class="form-group text-center">-->
-        <!--{{'sign-in.not_registered' | translate}}-->
-        <!--<a [routerLink]="['/sign-up']" class="s-olm-3">{{'sign-in.register_link' | translate}}</a>-->
-      <!--</p>-->
-    <!--</form>-->
-  </div>
+  <h1 class="auth-title">Sign in</h1>
+  <form
+    class="form"
+    role="form"
+    [formGroup]="signInForm"
+    (ngSubmit)="onSubmit()"
+    [ngClass]="{submited:submitted}"
+  >
+    <app-input
+      type="email"
+      [form]="signInForm"
+      [submitted]="submitted"
+      control="email"
+      label="email"
+    ></app-input>
+    <app-input
+      type="password"
+      [form]="signInForm"
+      [submitted]="submitted"
+      control="password"
+      label="password"
+    ></app-input>
+    <div class="text-center form-group">
+      <app-button>Login</app-button>
+    </div>
+    <p class="form-group text-center">
+      <a [routerLink]="['/sign-up']" class="s-olm-3">Register link</a>
+    </p>
+  </form>
 </div>

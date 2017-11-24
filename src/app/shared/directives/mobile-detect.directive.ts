@@ -10,15 +10,8 @@ export class MobileDetectDirective implements OnInit {
     const isMobile = md.mobile();
     const isTablet = md.tablet();
     const userAgent = md.userAgent();
-    console.log('MobileDetectDirective');
-    if (isMobile) {
-      document.querySelector('html').classList.add('mobile');
-    }
-    if (isTablet) {
-      document.querySelector('html').classList.add('tablet');
-    }
-    if (userAgent) {
-      document.querySelector('html').classList.add(userAgent);
-    }
+    if (isMobile) document.querySelector('html').classList.add('mobile');
+    if (isTablet) document.querySelector('html').classList.add('tablet');
+    if (userAgent) document.querySelector('html').classList.add(userAgent);
   }
 }
