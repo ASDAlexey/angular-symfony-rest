@@ -22,7 +22,7 @@
         "../node_modules/bootstrap/scss/bootstrap.scss",
         "../node_modules/jquery-confirm/dist/jquery-confirm.min.css",
         "../node_modules/ngx-toastr/toastr.css",
-        "styles.scss"
+        "assets/styles/style.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
