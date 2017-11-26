@@ -8,6 +8,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 // import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
 const modules = [
   CommonModule,
@@ -16,6 +17,7 @@ const modules = [
 ];
 
 const services = [
+  AuthGuard,
   AuthService,
 ];
 
