@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
 import { AuthRoutingModule } from './auth-routing.module';
-
-
-// import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 
@@ -23,7 +21,7 @@ const services = [
 
 const components = [
   SignInComponent,
-  // SignUpComponent,
+  SignUpComponent,
 ];
 
 @NgModule({

@@ -6,9 +6,19 @@ import { SharedConstants } from '../shared/shared.constant';
 import { UserModel } from './user.model';
 import { Subject } from 'rxjs/Subject';
 
-interface SignIn {
+interface Auth {
   data: UserModel | {},
   meta: { token: string }
+}
+
+interface SignIn {
+  email: string,
+  password: string,
+}
+
+interface SignUp {
+  email: string,
+  plainPassword: { first: string, second: string },
 }
 
 @Injectable()
@@ -49,13 +59,21 @@ export class AuthService {
     this.user$.next(user);
   }
 
-  signIn(data: { email: string, password: string }): Observable<SignIn> {
-    const req = this.http.post<SignIn>(`${AuthService.BASE_URL}/login`, data);
-    return req.pipe(map((res: SignIn) => {
+  auth(data: SignIn | SignUp, url): Observable<Auth> {
+    const req = this.http.post<Auth>(`${AuthService.BASE_URL}/${url}`, data);
+    return req.pipe(map((res: Auth) => {
       this.user = UserModel.create(res.data);
       AuthService.setAuthToken(res.meta.token);
       return { data: this.user, meta: res.meta };
     }));
+  }
+
+  signIn(data: SignIn): Observable<Auth> {
+    return this.auth(data, 'sign-in');
+  }
+
+  signUp(data: SignUp): Observable<Auth> {
+    return this.auth(data, 'sign-up');
   }
 
   logout(): void {
