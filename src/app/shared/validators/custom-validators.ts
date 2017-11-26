@@ -25,23 +25,15 @@ export class CustomValidators {
   }
 
   static password(c: FormControl): { [s: string]: boolean } {
-    return c.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\!\#\$\%\&\-\_\~])[a-zA-Z\d\!\#\$\%\&\-\_\~]{6,255}$/) ? null : { password: true };
+    return c.value && c.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\!\#\$\%\&\-\_\~])[a-zA-Z\d\!\#\$\%\&\-\_\~]{6,255}$/) ? null : { password: true };
   }
 
   static noSpace(c: FormControl): { [s: string]: boolean } {
-    return c.value.match(/\s/) ? { noSpace: true } : null;
+    return c.value && c.value.match(/\s/) ? { noSpace: true } : null;
   }
 
   static email(c: FormControl): { [s: string]: boolean } {
-    return c.value.match(/^([a-zA-Z0-9-_\.\+]+)@\w+([\.-]?\w+)*(\.\w{2,3})+$/) ? null : { email: true };
-  }
-
-  static vat(c: FormControl): { [s: string]: boolean } {
-    return c.value.match(/^(SE\d{12})?$/) ? null : { vat: true };
-  }
-
-  static companyNumber(c: FormControl): { [s: string]: boolean } {
-    return c.value.match(/^(\d{6}-\d{4})?$/) ? null : { companyNumber: true };
+    return c.value && c.value.match(/^([a-zA-Z0-9-_\.\+]+)@\w+([\.-]?\w+)*(\.\w{2,3})+$/) ? null : { email: true };
   }
 
   static notBeInFuture(c: FormControl): { [s: string]: boolean } {
@@ -56,11 +48,7 @@ export class CustomValidators {
     return isSelectedDayInFuture ? null : { notBeInFuture: true };
   }
 
-  static restoreId(c: string): boolean {
-    return !!c.match(/^[a-z0-9]{48}$/);
-  }
-
   static positive(c: FormControl): { [s: string]: boolean } {
-    return +parseFloat(c.value).toFixed(2) > 0 ? null : { positive: true };
+    return c.value && +parseFloat(c.value).toFixed(2) > 0 ? null : { positive: true };
   }
 }

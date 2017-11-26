@@ -215,8 +215,18 @@ figcaption {
   pointer-events: none !important;
 }
 
-textarea {
+textarea,
+input,
+button {
   outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.form-control:focus {
+  border-color: $gray;
 }
 
 .hide-block {

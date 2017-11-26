@@ -1,28 +1,22 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import * as _ from 'lodash';
 import { CustomValidators } from '../../shared/validators/custom-validators';
 import { AuthService } from '../auth.service';
+import { DestroySubscribers } from 'ng2-destroy-subscribers';
+import { Router } from '@angular/router';
 
-// import { AuthService } from '../../services/auth.service';
-
-// import SignInModel from '../../models/sign-in.model';
-
+@DestroySubscribers()
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent implements OnInit, OnDestroy {
-  // subscription: any;
+export class SignInComponent implements OnInit {
+  subscribers: any = {};
   signInForm: FormGroup;
   submitted: boolean;
 
-  constructor(private authService: AuthService) {
-    // authService.user.subscribe((res) => {
-    //   console.log(res);
-    // });
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -40,31 +34,16 @@ export class SignInComponent implements OnInit, OnDestroy {
         CustomValidators.noSpace,
       ])),
     });
-
-    // this.subscription = this.user$.subscribe((res) => {
-    //   const data = _.get(res, 'data');
-    //   if (data && _.get(res, 'isAuth')) {
-    //     this.submitted = false;
-    //     this.router.navigate(['/accounting']);
-    //     this.signInForm.reset();
-    //   }
-    // });
   }
 
   onSubmit(): void {
     this.submitted = true;
     if (this.signInForm.valid) {
-      // this.authService.signIn(this.signInForm.value).then((res) => {
-      //   console.log(res);
-      // });
-      this.authService.signIn(this.signInForm.value).subscribe((res) => {
-        console.log(res);
+      this.subscribers.user = this.authService.signIn(this.signInForm.value).subscribe((res) => {
+        this.signInForm.reset();
+        this.submitted = false;
+        // this.router.navigate(['/']);
       });
-      // this.authService.login(new SignInModel(this.signInForm.value));
     }
-  }
-
-  ngOnDestroy() {
-    // if (this.subscription) this.subscription.unsubscribe();
   }
 }
