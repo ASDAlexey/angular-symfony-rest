@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as _ from 'lodash';
-import { CustomValidators } from '../../../shared/validators/custom-validators';
+import { CustomValidators } from '../../shared/validators/custom-validators';
+import { AuthService } from '../auth.service';
 
 // import { AuthService } from '../../services/auth.service';
 
@@ -18,7 +19,10 @@ export class SignInComponent implements OnInit, OnDestroy {
   signInForm: FormGroup;
   submitted: boolean;
 
-  constructor(private router: Router) {
+  constructor(private authService: AuthService) {
+    // authService.user.subscribe((res) => {
+    //   console.log(res);
+    // });
   }
 
   ngOnInit() {
@@ -34,7 +38,6 @@ export class SignInComponent implements OnInit, OnDestroy {
         Validators.minLength(6),
         Validators.maxLength(255),
         CustomValidators.noSpace,
-        CustomValidators.password,
       ])),
     });
 
@@ -50,7 +53,15 @@ export class SignInComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     this.submitted = true;
-    // if (this.signInForm.valid) this.authService.login(new SignInModel(this.signInForm.value));
+    if (this.signInForm.valid) {
+      // this.authService.signIn(this.signInForm.value).then((res) => {
+      //   console.log(res);
+      // });
+      this.authService.signIn(this.signInForm.value).subscribe((res) => {
+        console.log(res);
+      });
+      // this.authService.login(new SignInModel(this.signInForm.value));
+    }
   }
 
   ngOnDestroy() {

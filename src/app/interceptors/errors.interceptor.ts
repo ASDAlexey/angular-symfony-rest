@@ -26,22 +26,10 @@ export class ErrorsInterceptor implements HttpInterceptor {
   }
 
   errorHandler(errRes, statuses: [number]) {
-    if (errRes instanceof HttpErrorResponse && statuses.includes(errRes.status)) {
-      if (errRes.status !== HttpErrors.NotFound) {
-        // clear jwtToken from localStorage
-        // if (errRes.status === HttpErrors.Unauthorized) AuthService.clearAuthToken();
-
-        // toast error message
-        let pathBadRequest = '';
-        if (errRes.status === HttpErrors.BadRequest) {
-          pathBadRequest = _.get(errRes, 'error.meta.errors.validation.message') ? 'error.meta.errors.validation.message' : 'error.meta.errors.message';
-        }
-        const msg: string = _.get(errRes, errRes.status === HttpErrors.BadRequest ? pathBadRequest : 'error.meta.errors.message');
-        if (msg) this.toastrService.error(msg);
-        return errRes;
-      } else {
-        this.toastrService.error('Not found');
-      }
+    if (errRes instanceof HttpErrorResponse && statuses.indexOf(errRes.status) !== -1) {
+      if (errRes.status === HttpErrors.Unauthorized) {
+        this.toastrService.error(_.get(errRes, 'error.errors'));
+      } else return errRes;
     }
   }
 

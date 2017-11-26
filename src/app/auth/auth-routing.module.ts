@@ -5,7 +5,7 @@ import { MetaGuard } from '@ngx-meta/core';
 import { LayoutsModule } from '../layouts/layouts.module';
 import { BlankLayoutComponent } from '../layouts/components/blank-layout/blank-layout.component';
 // import { AuthGuard } from './services/auth-guard.service';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 const authRoutes: Routes = [
   {
