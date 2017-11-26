@@ -226,7 +226,8 @@ button {
 }
 
 .form-control:focus {
-  border-color: $gray;
+  border-color: $gray !important;
+  box-shadow: none !important;
 }
 
 .hide-block {

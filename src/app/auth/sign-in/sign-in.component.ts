@@ -42,7 +42,7 @@ export class SignInComponent implements OnInit {
       this.subscribers.user = this.authService.signIn(this.signInForm.value).subscribe((res) => {
         this.signInForm.reset();
         this.submitted = false;
-        // this.router.navigate(['/']);
+        this.router.navigate(['/']);
       });
     }
   }
