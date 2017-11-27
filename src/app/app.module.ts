@@ -33,10 +33,8 @@ import { MobileDetectDirective } from './shared/directives/mobile-detect.directi
     HttpClientModule,
     LayoutsModule,
     AppRoutingModule,
-    ToastrModule.forRoot({
-      timeOut: 1500,
-      preventDuplicates: true,
-    }),
+    ToastrModule.forRoot(),
+    // ToastrModule.forRoot({ timeOut: 1500, preventDuplicates: true }),
     // MetaModule.forRoot({
     //   provide: MetaLoader,
     //   useFactory: (metaFactory),

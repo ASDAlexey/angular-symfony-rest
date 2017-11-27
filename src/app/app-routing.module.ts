@@ -3,6 +3,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
   { path: '', loadChildren: './auth/auth.module#AuthModule' },
+  { path: 'products', loadChildren: './products/products.module#ProductsModule' },
 
   // Handle all other routes
   { path: '**', redirectTo: '/sign-in' },

@@ -13,6 +13,6 @@ export class BasicLayoutComponent {
 
   logout() {
     // this.authService.logout();
-    this.router.navigate(['/sign-in']);
+    // this.router.navigate(['/sign-in']);
   }
 }
