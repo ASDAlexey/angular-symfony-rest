@@ -69,7 +69,7 @@ export class AuthService {
   }
 
   signIn(data: SignIn): Observable<Auth> {
-    return this.auth(data, 'sign-in');
+    return this.auth(data, 'login');
   }
 
   signUp(data: SignUp): Observable<Auth> {
