@@ -17,6 +17,9 @@ import { ModalService } from './services/modal.service';
 import { ConfirmDirective } from './directives/confirm.directive';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { MyDatePickerModule } from 'mydatepicker';
+import { PublicGuardService } from './services/public-guard.service';
+import { PrivateGuardService } from './services/private-guard.service';
+import { AuthService } from './services/auth.service';
 
 const modules = [
   FormsModule,
@@ -28,6 +31,9 @@ const modules = [
 ];
 
 const services = [
+  PublicGuardService,
+  PrivateGuardService,
+  AuthService,
   SharedConstants,
   ModalService,
 ];

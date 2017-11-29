@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { AuthService } from '../../../auth/auth.service';
+import { AuthService } from '../../../shared/services/auth.service';
 import { UserModel } from '../../../auth/user.model';
 
 @Component({

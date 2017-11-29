@@ -5,9 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthRoutingModule } from './auth-routing.module';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { AuthService } from './auth.service';
-import { PublicGuardService } from './public-guard.service';
-import { PrivateGuardService } from './private-guard.service';
+import { AuthService } from '../shared/services/auth.service';
 
 const modules = [
   CommonModule,
@@ -16,9 +14,6 @@ const modules = [
 ];
 
 const services = [
-  PublicGuardService,
-  PrivateGuardService,
-  AuthService,
 ];
 
 const components = [

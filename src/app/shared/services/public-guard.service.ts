@@ -9,6 +9,8 @@ export class PublicGuardService implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    console.log('AAAA');
+    console.log(AuthService.getAuthToken());
     if (AuthService.getAuthToken()) this.router.navigate(['/products']);
     else return true;
   }

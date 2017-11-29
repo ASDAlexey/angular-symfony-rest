@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import { SharedConstants } from '../shared/shared.constant';
-import { UserModel } from './user.model';
+import { SharedConstants } from '../shared.constant';
+import { UserModel } from '../../auth/user.model';
 import { Subject } from 'rxjs/Subject';
 
 interface Auth {
@@ -59,7 +59,7 @@ export class AuthService {
     this.user$.next(user);
   }
 
-  auth(data: SignIn | SignUp, url): Observable<Auth> {
+  auth(data: SignIn | SignUp | { token: string }, url): Observable<Auth> {
     const req = this.http.post<Auth>(`${AuthService.BASE_URL}/${url}`, data);
     return req.pipe(map((res: Auth) => {
       this.user = UserModel.create(res.data);
@@ -74,6 +74,10 @@ export class AuthService {
 
   signUp(data: SignUp): Observable<Auth> {
     return this.auth(data, 'sign-up');
+  }
+
+  autoLogin(token: string): Observable<Auth> {
+    return this.auth({ token }, 'auto-login');
   }
 
   logout(): void {
