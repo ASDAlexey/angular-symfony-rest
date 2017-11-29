@@ -6,7 +6,7 @@ const appRoutes: Routes = [
   { path: 'products', loadChildren: './products/products.module#ProductsModule' },
 
   // Handle all other routes
-  { path: '**', redirectTo: '/sign-in' },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({

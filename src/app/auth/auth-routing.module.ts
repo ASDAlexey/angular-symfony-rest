@@ -15,7 +15,7 @@ const authRoutes: Routes = [
     // canActivateChild: [MetaGuard],
     children: [
       {
-        path: 'sign-in',
+        path: '',
         component: SignInComponent,
         canActivate: [AuthGuard],
         // data: { meta: { title: 'Login' } },

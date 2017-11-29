@@ -31,10 +31,10 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.redirect().then((data) => {
       if (data) {
-        if (this.isPrivatePage(state.url)) this.router.navigate(['/']);
+        if (this.isPrivatePage(state.url)) this.router.navigate(['/products']);
         else return true;
       } else {
-        if (!this.isPrivatePage(state.url)) this.router.navigate(['/sign-in']);
+        if (!this.isPrivatePage(state.url)) this.router.navigate(['/']);
         else return true;
       }
     });
