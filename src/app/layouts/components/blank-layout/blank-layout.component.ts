@@ -12,8 +12,7 @@ import { UserModel } from '../../../auth/user.model';
 export class BlankLayoutComponent {
   user: UserModel;
 
-  constructor(private router: Router, public authService: AuthService) {
-    authService.getUser$().subscribe(res => (this.user = res));
+  constructor(private router: Router) {
     document.querySelector('.preloader').classList.add('loaded');
   }
 }
