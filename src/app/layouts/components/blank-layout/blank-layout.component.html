@@ -1,7 +1,7 @@
 <div class="layout__blank">
   <header class="header">
     {{ user ? 'user: '+user?.email : '' }}
-    <button class="btn btn-default logout" (click)="logout()">logout</button>
+    <button class="btn btn-default logout">logout</button>
   </header>
   <router-outlet></router-outlet>
 </div>
