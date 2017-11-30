@@ -1,22 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MetaGuard } from '@ngx-meta/core';
-
 import { LayoutsModule } from '../layouts/layouts.module';
 import { BlankLayoutComponent } from '../layouts/components/blank-layout/blank-layout.component';
-// import { AuthGuard } from './services/auth-guard.service';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { PublicGuardService } from '../shared/services/public-guard.service';
 
 const authRoutes: Routes = [
   {
     path: '',
     component: BlankLayoutComponent,
+    // canActivate: [PublicGuardService],
     // canActivateChild: [MetaGuard],
     children: [
       {
-        path: 'sign-in',
+        path: '',
         component: SignInComponent,
-        // canActivate: [AuthGuard],
+        // canActivate: [PublicGuardService],
+        // data: { meta: { title: 'Login' } },
+      },
+      {
+        path: 'sign-up',
+        component: SignUpComponent,
+        // canActivate: [PublicGuardService],
         // data: { meta: { title: 'Login' } },
       },
     ],

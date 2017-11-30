@@ -11,6 +11,8 @@ import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 import { RequestInterceptor } from './interceptors/request.interceptor';
 import { LayoutsModule } from './layouts/layouts.module';
 import { AppRoutingModule } from './app-routing.module';
+import { MobileDetectDirective } from './shared/directives/mobile-detect.directive';
+import { AuthService } from './shared/services/auth.service';
 
 // export function metaFactory(translate: TranslateService): MetaLoader {
 //   return new MetaStaticLoader({
@@ -24,6 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
+    MobileDetectDirective,
   ],
   imports: [
     BrowserModule,
@@ -31,10 +34,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     LayoutsModule,
     AppRoutingModule,
-    ToastrModule.forRoot({
-      timeOut: 1500,
-      preventDuplicates: true,
-    }),
+    ToastrModule.forRoot(),
+    // ToastrModule.forRoot({ timeOut: 1500, preventDuplicates: true }),
     // MetaModule.forRoot({
     //   provide: MetaLoader,
     //   useFactory: (metaFactory),
@@ -46,6 +47,7 @@ import { AppRoutingModule } from './app-routing.module';
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+    AuthService,
   ],
   bootstrap: [AppComponent],
 })

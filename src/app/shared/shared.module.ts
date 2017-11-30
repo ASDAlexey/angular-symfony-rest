@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedConstants } from './shared.constant';
 import { ButtonComponent } from './components/button/button.component';
-import { MobileDetectDirective } from './directives/mobile-detect.directive';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { InputComponent } from './components/input/input.component';
 import { ReplacePipe } from './pipes/replace.pipe';
@@ -18,6 +17,9 @@ import { ModalService } from './services/modal.service';
 import { ConfirmDirective } from './directives/confirm.directive';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { MyDatePickerModule } from 'mydatepicker';
+import { PublicGuardService } from './services/public-guard.service';
+import { PrivateGuardService } from './services/private-guard.service';
+import { AuthService } from './services/auth.service';
 
 const modules = [
   FormsModule,
@@ -29,6 +31,8 @@ const modules = [
 ];
 
 const services = [
+  PublicGuardService,
+  PrivateGuardService,
   SharedConstants,
   ModalService,
 ];
@@ -41,7 +45,6 @@ const components = [
   InputComponent,
   CheckboxComponent,
   SelectComponent,
-  MobileDetectDirective,
   ButtonComponent,
   DatePickerComponent,
   RadioComponent,
@@ -53,12 +56,10 @@ const components = [
 
 
 @NgModule({
-  imports: [...modules],
   declarations: [...components, ...pipes],
+  imports: [...modules],
+  providers: [...services],
   exports: [...modules, ...components, ...pipes],
-  providers: [
-    ...services,
-  ],
 })
 export class SharedModule {
 }

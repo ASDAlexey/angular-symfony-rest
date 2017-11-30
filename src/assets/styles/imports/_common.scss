@@ -1,0 +1,97 @@
+.form-control {
+  padding-top: 8px;
+}
+
+.vh-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dibt {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.tal {
+  text-align: left;
+}
+
+.vam {
+  text-align: center;
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.ttu {
+  text-transform: uppercase;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.ngx-pagination {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.red {
+  color: $red;
+}
+
+.radio-item {
+  width: 50%;
+  float: left;
+  height: 100%;
+}
+
+.switcher {
+  .radio-item {
+    &:nth-child(2) {
+      .radio__label {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.dialog {
+  opacity: 0;
+  background: rgba(#000, .75);
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  transition: .3s opacity;
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.jconfirm-content {
+  overflow: hidden !important;
+}
+
+.btnclearenabled {
+  background: none !important;
+}
+
+body.private {
+  background-color: #ccc;
+}

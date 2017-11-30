@@ -4,8 +4,10 @@
 @import "imports/mixins";
 // default custom styles
 @import "imports/fonts";
-//@import "imports/default";
+@import "imports/default";
 @import "imports/scrollbar";
 // custom styles
 @import "imports/preloader";
 @import "imports/toastr";
+@import "imports/common";
+@import "imports/auth";

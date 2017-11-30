@@ -3,11 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
 import { AuthRoutingModule } from './auth-routing.module';
-
-// import { AuthService } from './services/auth.service';
-
-// import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { AuthService } from '../shared/services/auth.service';
 
 const modules = [
   CommonModule,
@@ -15,25 +13,17 @@ const modules = [
   AuthRoutingModule,
 ];
 
-const services = [
-  // AuthService,
-];
+const services = [];
 
 const components = [
   SignInComponent,
-  // SignUpComponent,
+  SignUpComponent,
 ];
 
 @NgModule({
-  declarations: [
-    ...components,
-  ],
-  imports: [
-    ...modules,
-  ],
-  providers: [
-    ...services,
-  ],
+  declarations: [...components],
+  imports: [...modules],
+  providers: [...services],
 })
 export class AuthModule {
 

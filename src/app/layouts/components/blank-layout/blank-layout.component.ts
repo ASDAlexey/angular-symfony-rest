@@ -1,6 +1,8 @@
 import * as _ from 'lodash';
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthService } from '../../../shared/services/auth.service';
+import { UserModel } from '../../../auth/user.model';
 
 @Component({
   selector: 'app-blank-layout',
@@ -8,15 +10,10 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./blank-layout.component.scss'],
 })
 export class BlankLayoutComponent {
-  isSignInPage: boolean;
+  user: UserModel;
 
-  static checkUrl(url: string): boolean {
-    return url === '/sign-in';
-  }
-
-  constructor(private router: Router) {
-    this.isSignInPage = BlankLayoutComponent.checkUrl(_.get(router, 'routerState.snapshot.url'));
-
-    document.querySelector('.preloader-logo').classList.add('loaded');
+  constructor(private router: Router, public authService: AuthService) {
+    authService.getUser$().subscribe(res => (this.user = res));
+    document.querySelector('.preloader').classList.add('loaded');
   }
 }

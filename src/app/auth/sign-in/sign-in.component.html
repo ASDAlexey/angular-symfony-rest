@@ -1,0 +1,31 @@
+<div class="auth">
+  <h1 class="auth-title">Sign in</h1>
+  <form
+    class="form"
+    role="form"
+    [formGroup]="signInForm"
+    (ngSubmit)="onSubmit()"
+    [ngClass]="{submited:submitted}"
+  >
+    <app-input
+      type="email"
+      [form]="signInForm"
+      [submitted]="submitted"
+      control="email"
+      label="email"
+    ></app-input>
+    <app-input
+      type="password"
+      [form]="signInForm"
+      [submitted]="submitted"
+      control="password"
+      label="password"
+    ></app-input>
+    <div class="text-center form-group">
+      <app-button>Login</app-button>
+    </div>
+    <p class="form-group text-center">
+      <a [routerLink]="['/sign-up']" class="s-olm-3">Sign up link</a>
+    </p>
+  </form>
+</div>
