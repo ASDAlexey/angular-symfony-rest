@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 html,
 body {
   -webkit-font-smoothing: antialiased;
@@ -219,8 +215,19 @@ figcaption {
   pointer-events: none !important;
 }
 
-textarea {
+textarea,
+input,
+button {
   outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.form-control:focus {
+  border-color: $gray !important;
+  box-shadow: none !important;
 }
 
 .hide-block {
@@ -229,8 +236,8 @@ textarea {
 
 input:-webkit-autofill,
 input:focus:-webkit-autofill {
-  transition: 0s box-shadow;
-  box-shadow: 0 0 0 1000px #fff inset;
+  transition: 0s box-shadow !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
 }
 
 .hidden-input {
