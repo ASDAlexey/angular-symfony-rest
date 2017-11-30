@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-  isWaitRedirect: boolean = false;
   subscribers: any = {};
   signInForm: FormGroup;
   submitted: boolean;
@@ -40,7 +39,6 @@ export class SignInComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     if (this.signInForm.valid) {
-      // this.authService.isWaitRedirect = true;
       this.subscribers.user = this.authService.signIn(this.signInForm.value).subscribe((res) => {
         this.submitted = false;
         this.signInForm.reset();
