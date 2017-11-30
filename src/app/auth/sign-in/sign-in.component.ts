@@ -35,22 +35,16 @@ export class SignInComponent implements OnInit {
         CustomValidators.noSpace,
       ])),
     });
-
-    this.authService.getUser$().subscribe((res) => {
-      if (this.isWaitRedirect) {
-        this.isWaitRedirect = false;
-        this.router.navigate(['/products']);
-      }
-    });
   }
 
   onSubmit(): void {
     this.submitted = true;
     if (this.signInForm.valid) {
-      this.isWaitRedirect = true;
+      // this.authService.isWaitRedirect = true;
       this.subscribers.user = this.authService.signIn(this.signInForm.value).subscribe((res) => {
         this.submitted = false;
         this.signInForm.reset();
+        this.router.navigate(['/products']);
       });
     }
   }

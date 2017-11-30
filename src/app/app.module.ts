@@ -12,6 +12,7 @@ import { RequestInterceptor } from './interceptors/request.interceptor';
 import { LayoutsModule } from './layouts/layouts.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MobileDetectDirective } from './shared/directives/mobile-detect.directive';
+import { AuthService } from './shared/services/auth.service';
 
 // export function metaFactory(translate: TranslateService): MetaLoader {
 //   return new MetaStaticLoader({
@@ -46,6 +47,7 @@ import { MobileDetectDirective } from './shared/directives/mobile-detect.directi
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+    AuthService,
   ],
   bootstrap: [AppComponent],
 })

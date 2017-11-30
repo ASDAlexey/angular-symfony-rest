@@ -33,7 +33,6 @@ const modules = [
 const services = [
   PublicGuardService,
   PrivateGuardService,
-  AuthService,
   SharedConstants,
   ModalService,
 ];
@@ -57,12 +56,10 @@ const components = [
 
 
 @NgModule({
-  imports: [...modules],
   declarations: [...components, ...pipes],
+  imports: [...modules],
+  providers: [...services],
   exports: [...modules, ...components, ...pipes],
-  providers: [
-    ...services,
-  ],
 })
 export class SharedModule {
 }

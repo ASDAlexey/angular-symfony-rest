@@ -13,8 +13,7 @@ const modules = [
   AuthRoutingModule,
 ];
 
-const services = [
-];
+const services = [];
 
 const components = [
   SignInComponent,
@@ -22,15 +21,9 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [
-    ...components,
-  ],
-  imports: [
-    ...modules,
-  ],
-  providers: [
-    ...services,
-  ],
+  declarations: [...components],
+  imports: [...modules],
+  providers: [...services],
 })
 export class AuthModule {
 
