@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
+  isWaitRedirect: boolean = false;
   subscribers: any = {};
   signInForm: FormGroup;
   submitted: boolean;
@@ -34,15 +35,22 @@ export class SignInComponent implements OnInit {
         CustomValidators.noSpace,
       ])),
     });
+
+    this.authService.getUser$().subscribe((res) => {
+      if (this.isWaitRedirect) {
+        this.isWaitRedirect = false;
+        this.router.navigate(['/products']);
+      }
+    });
   }
 
   onSubmit(): void {
     this.submitted = true;
     if (this.signInForm.valid) {
+      this.isWaitRedirect = true;
       this.subscribers.user = this.authService.signIn(this.signInForm.value).subscribe((res) => {
-        this.signInForm.reset();
         this.submitted = false;
-        this.router.navigate(['/products']);
+        this.signInForm.reset();
       });
     }
   }
