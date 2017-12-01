@@ -4,18 +4,23 @@ import { LayoutsModule } from '../layouts/layouts.module';
 import { BasicLayoutComponent } from '../layouts/components/basic-layout/basic-layout.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { PrivateGuardService } from '../shared/services/private-guard.service';
+import { ProductAddEditComponent } from './product-add-edit/product-add-edit.component';
 
 const authRoutes: Routes = [
   {
     path: '',
     component: BasicLayoutComponent,
-    // canActivate: [PrivateGuardService],
+    canActivate: [PrivateGuardService],
     // canActivateChild: [MetaGuard],
     children: [
       {
         path: '',
         component: ProductListComponent,
-        canActivate: [PrivateGuardService],
+        // data: { meta: { title: 'Login' } },
+      },
+      {
+        path: 'new',
+        component: ProductAddEditComponent,
         // data: { meta: { title: 'Login' } },
       },
     ],
