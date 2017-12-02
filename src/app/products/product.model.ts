@@ -7,6 +7,7 @@ export class ProductModel extends AbstractModel {
   description: string;
   color: string;
   year: string;
+  image: string;
   updatedAt: string;
   createdAt: string;
 
@@ -18,6 +19,7 @@ export class ProductModel extends AbstractModel {
     this.description = data.description;
     this.color = data.color;
     this.year = data.year;
+    this.image = data.image;
     this.updatedAt = data.updatedAt;
     this.createdAt = data.createdAt;
   }

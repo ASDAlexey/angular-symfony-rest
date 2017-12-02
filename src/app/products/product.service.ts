@@ -3,12 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { SharedConstants } from '../shared/shared.constant';
 import { convert2FormData } from '../shared/helpers/get-form-data.helper';
 import { ProductModel } from './product.model';
+import { map } from 'rxjs/operators';
+
+export interface Products {
+  data: ProductModel[],
+  meta: { count: number },
+}
 
 @Injectable()
 export class ProductService {
   static BASE_URL: string = `${SharedConstants.API_URL}/api`;
 
   constructor(private http: HttpClient) {
+  }
+
+  get() {
+    const req = this.http.get<Products>(`${ProductService.BASE_URL}/products`);
+    return req.pipe(map((res: Products) => {
+      const products = res.data.map(item => (ProductModel.create(item)));
+      return { data: products, meta: res.meta };
+    }));
   }
 
   create(data) {
