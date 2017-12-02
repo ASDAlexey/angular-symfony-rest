@@ -4,9 +4,11 @@
       <a class="btn btn-primary float-right new-product" [routerLink]="['/products/new']">
         Create new product
       </a>
+      <h1 class="title">List products</h1>
     </div>
   </div>
-  <div class="row">
+  <app-preloader [show]="loading"></app-preloader>
+  <div class="row" *ngIf="!loading">
     <div class="col-md-12">
       <div class="table-responsive">
         <table class="table products-table">
@@ -22,7 +24,6 @@
           </tr>
           <tr
             class="product-row"
-            [ngClass]="{'loaded':!loading}"
             *ngFor="let product of products"
           >
             <td class="text-center">
@@ -60,11 +61,21 @@
           </tr>
         </table>
         <ul class="pagination" *ngIf="!loading">
-          <li class="page-item"><button class="page-link">Previous</button></li>
-          <li class="page-item"><button class="page-link">1</button></li>
-          <li class="page-item"><button class="page-link">2</button></li>
-          <li class="page-item"><button class="page-link">3</button></li>
-          <li class="page-item"><button class="page-link">Next</button></li>
+          <li class="page-item">
+            <button class="page-link">Previous</button>
+          </li>
+          <li class="page-item">
+            <button class="page-link">1</button>
+          </li>
+          <li class="page-item">
+            <button class="page-link">2</button>
+          </li>
+          <li class="page-item">
+            <button class="page-link">3</button>
+          </li>
+          <li class="page-item">
+            <button class="page-link">Next</button>
+          </li>
         </ul>
       </div>
     </div>

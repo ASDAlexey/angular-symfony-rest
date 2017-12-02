@@ -1,11 +1,4 @@
 .product-row {
-  opacity: 0;
-  transition: .3s opacity;
-
-  &.loaded {
-    opacity: 1;
-  }
-
   .btn {
     margin: 5px 0;
     width: 120px;
