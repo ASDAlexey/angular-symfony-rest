@@ -2,14 +2,18 @@ import * as queryString from 'querystring';
 
 export class PaginationHelper {
   offset: number = 0;
-  limit: number = 10;
-  total: number;
+  limit: number = 5;
+  count: number;
+
+  static create(data = null) {
+    return new this(data);
+  }
 
   constructor(data = null) {
     if (data) {
       if (data.offset) this.offset = data.offset;
       if (data.limit) this.limit = data.limit;
-      if (data.total) this.total = data.total;
+      if (data.count) this.count = data.count;
     }
   }
 
@@ -17,13 +21,16 @@ export class PaginationHelper {
     return this.offset / this.limit + 1;
   }
 
-  setPage(page): any {
+  setPage(page): PaginationHelper {
     this.offset = (page - 1) * this.limit;
     return this;
   }
 
-  setTotal(total): void {
-    this.total = total
+  setCount(count): void {
+    this.count = count;
+    if (this.getCurrentPage() * this.limit - this.count > this.limit) {
+      this.setPage(Math.floor(this.count / this.limit) + 1);
+    }
   }
 
   getParams(): any {
@@ -31,6 +38,6 @@ export class PaginationHelper {
   }
 
   stringify(): string {
-    return queryString.stringify(this.getParams())
+    return queryString.stringify(this.getParams());
   }
 }

@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { MetaLoader, MetaModule, MetaStaticLoader, PageTitlePositioning } from '@ngx-meta/core';
 import { RequestService } from './shared/services/request.service';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
@@ -34,6 +35,7 @@ import { AuthService } from './auth/auth.service';
     HttpClientModule,
     LayoutsModule,
     AppRoutingModule,
+    NgxPaginationModule,
     ToastrModule.forRoot(),
     // ToastrModule.forRoot({ timeOut: 1500, preventDuplicates: true }),
     // MetaModule.forRoot({

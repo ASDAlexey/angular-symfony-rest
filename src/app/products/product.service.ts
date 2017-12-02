@@ -17,8 +17,8 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  get() {
-    const req = this.http.get<Products>(`${ProductService.BASE_URL}/products`);
+  get(options: string = 'offset=10&limit=5') {
+    const req = this.http.get<Products>(`${ProductService.BASE_URL}/products?${options}`);
     return req.pipe(map((res: Products) => {
       const products = res.data.map(item => (ProductModel.create(item)));
       return { data: products, meta: res.meta };

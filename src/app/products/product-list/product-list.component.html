@@ -20,10 +20,10 @@
             <th class="text-center">updatedAt</th>
             <th class="text-center">Actions</th>
           </tr>
-          <tr class="product-row" *ngFor="let product of products">
+          <tr class="product-row" [ngClass]="{'loaded':!loading}" *ngFor="let product of products">
             <td class="text-center">
               <img
-                [src]="product.image ? API_URL+'/images/products/'+product.image : '/images/no-image.jpg'"
+                [src]="product.image ? API_URL+'/images/products/'+product.image : ASSETS_URL+'/images/no-image.jpg'"
                 alt="phone"
                 class="image"
               >
@@ -36,7 +36,7 @@
             <td class="text-center">{{ product.updatedAt | date }}</td>
             <td class="text-center">
               <div>
-                <a class="btn btn-success" [routerLink]="['/products', product.id]">
+                <a class="btn btn-success m__no-mt" [routerLink]="['/products', product.id]">
                   <i class="fa fa-desktop"></i>
                   Edit
                 </a>
@@ -55,6 +55,13 @@
             <td colspan="8">Products no found</td>
           </tr>
         </table>
+        <!--<pagination-controls-->
+        <!--*ngIf="pagination.total>pagination.limit"-->
+        <!--[previousLabel]="'pagination.prev' | translate"-->
+        <!--[nextLabel]="'pagination.next' | translate"-->
+        <!--maxSize="5"-->
+        <!--(pageChange)="pageChange($event)"-->
+        <!--&gt;</pagination-controls>-->
       </div>
     </div>
   </div>

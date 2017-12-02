@@ -3312,6 +3312,10 @@ ng2-destroy-subscribers@^0.0.28:
   version "0.0.28"
   resolved "https://registry.yarnpkg.com/ng2-destroy-subscribers/-/ng2-destroy-subscribers-0.0.28.tgz#bc43f3dff1c6095823c446fdeabb360b0700cd11"
 
+ngx-pagination@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-3.0.3.tgz#314145263613738d8c544da36cd8dacc5aa89a6f"
+
 ngx-toastr@^6.5.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-6.5.0.tgz#d6a528b3229bf3a4d570c0e7523a3391b87dc4ef"
@@ -4193,7 +4197,7 @@ querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
 
-querystring@0.2.0:
+querystring@0.2.0, querystring@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 

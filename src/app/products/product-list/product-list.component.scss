@@ -1,7 +1,15 @@
+.product-row {
+  opacity: 0;
+  transition: .3s opacity;
 
-.product-row .btn {
-  margin: 5px 0;
-  width: 120px;
+  &.loaded {
+    opacity: 1;
+  }
+
+  .btn {
+    margin: 5px 0;
+    width: 120px;
+  }
 }
 
 .product__image {
@@ -14,8 +22,8 @@
 }
 
 .image {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 150px;
+  max-height: 150px;
 }
 
 .product_content {
