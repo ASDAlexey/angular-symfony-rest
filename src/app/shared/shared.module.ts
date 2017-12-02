@@ -19,7 +19,7 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { PublicGuardService } from './services/public-guard.service';
 import { PrivateGuardService } from './services/private-guard.service';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../auth/auth.service';
 
 const modules = [
   FormsModule,

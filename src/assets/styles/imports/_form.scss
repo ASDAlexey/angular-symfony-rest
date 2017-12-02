@@ -1,4 +1,8 @@
 .form {
   margin: 20px auto;
-  width: 500px;
+  width: 300px;
+
+  .layout__basic & {
+    width: 500px;
+  }
 }

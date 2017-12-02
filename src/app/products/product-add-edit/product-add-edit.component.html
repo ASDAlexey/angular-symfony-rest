@@ -43,6 +43,14 @@
           control="year"
           label="Year"
         ></app-input>
+        <div class="form-group">
+          <label>Image</label>
+          <input type="file" (change)="onFileChange($event)" #fileInput>
+          <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">
+            Clear file
+          </button>
+          <img *ngIf="form.get('image').value" [src]="form.get('image').value.base64" alt="upload image" width="100">
+        </div>
         <div class="text-center form-group">
           <app-button>Send</app-button>
         </div>

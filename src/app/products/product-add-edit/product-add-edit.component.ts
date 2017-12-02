@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../shared/validators/custom-validators';
 import { DestroySubscribers } from 'ng2-destroy-subscribers';
+import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @DestroySubscribers()
 @Component({
@@ -14,44 +16,75 @@ export class ProductAddEditComponent implements OnInit {
   submitted: boolean;
   subscribers: any = {};
 
-  constructor() {
+  @ViewChild('fileInput') fileInput: ElementRef;
+
+  constructor(private formBuilder: FormBuilder, private productService: ProductService, private router: Router) {
+
   }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      name: new FormControl('', Validators.compose([
+    this.form = this.formBuilder.group({
+      name: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(255),
-      ])),
-      price: new FormControl('', Validators.compose([
+        Validators.minLength(3),
+        Validators.maxLength(210),
+      ])],
+      price: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(60),
         CustomValidators.positive,
-      ])),
-      description: new FormControl('', Validators.compose([
+      ])],
+      description: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(255),
-      ])),
-      color: new FormControl('', Validators.compose([
+      ])],
+      color: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(255),
-      ])),
-      year: new FormControl('', Validators.compose([
+      ])],
+      year: ['', Validators.compose([
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(4),
         CustomValidators.positive,
-      ])),
+      ])],
+      image: null,
     });
+  }
+
+  onFileChange(event) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.addEventListener('load', () => {
+        this.form.get('image').setValue({
+          file,
+          filename: file.name,
+          filetype: file.type,
+          base64: reader.result,
+        });
+
+        console.log(this.form.get('image'));
+      });
+    }
+  }
+
+  clearFile() {
+    this.form.get('image').setValue(null);
+    this.fileInput.nativeElement.value = '';
   }
 
   onSubmit(): void {
     this.submitted = true;
     if (this.form.valid) {
-      console.log(this.form.value);
+      this.subscribers.products = this.productService.create(this.form.value).subscribe((res) => {
+        this.submitted = false;
+        this.form.reset();
+        this.router.navigate(['/products']);
+      });
     }
   }
 }

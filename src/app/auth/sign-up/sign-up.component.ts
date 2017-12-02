@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../shared/validators/custom-validators';
-import { AuthService } from '../../shared/services/auth.service';
+import { AuthService } from '../auth.service';
 import { DestroySubscribers } from 'ng2-destroy-subscribers';
 import { Router } from '@angular/router';
 

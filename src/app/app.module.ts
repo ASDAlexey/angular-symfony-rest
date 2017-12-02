@@ -12,7 +12,7 @@ import { RequestInterceptor } from './interceptors/request.interceptor';
 import { LayoutsModule } from './layouts/layouts.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MobileDetectDirective } from './shared/directives/mobile-detect.directive';
-import { AuthService } from './shared/services/auth.service';
+import { AuthService } from './auth/auth.service';
 
 // export function metaFactory(translate: TranslateService): MetaLoader {
 //   return new MetaStaticLoader({
