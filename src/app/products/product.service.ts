@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SharedConstants } from '../shared/shared.constant';
 import { convert2FormData } from '../shared/helpers/get-form-data.helper';
+import { ProductModel } from './product.model';
 
 @Injectable()
 export class ProductService {
@@ -11,6 +12,6 @@ export class ProductService {
   }
 
   create(data) {
-    return this.http.post(`${ProductService.BASE_URL}/products`, convert2FormData(data));
+    return this.http.post<{ data: ProductModel }>(`${ProductService.BASE_URL}/products`, convert2FormData(data));
   }
 }

@@ -1,7 +1,7 @@
 export function convert2FormData(data) {
   const formData: any = new FormData();
   for (const [key, value] of Object.entries(data)) {
-    formData.append(key, value.hasOwnProperty('file') ? value.file : value);
+    if (value) formData.append(key, value.hasOwnProperty('file') ? value.file : value);
   }
   return formData;
   // log form data
