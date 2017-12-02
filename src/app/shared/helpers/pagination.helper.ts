@@ -3,7 +3,7 @@ import * as queryString from 'querystring';
 export class PaginationHelper {
   offset: number = 0;
   limit: number = 5;
-  count: number;
+  count: number = 5;
 
   static create(data = null) {
     return new this(data);

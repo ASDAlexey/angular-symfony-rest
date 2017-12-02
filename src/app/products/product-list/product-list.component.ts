@@ -44,6 +44,11 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  pageChange(page): void {
+    this.pagination = this.pagination.setPage(page);
+    this.getProducts();
+  }
+
   changeQuery() {
     const queryParams = { ...(this.pagination.getCurrentPage() > 1 && { page: this.pagination.getCurrentPage() }) };
     this.router.navigate(['/products'], { queryParams });
