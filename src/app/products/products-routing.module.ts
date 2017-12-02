@@ -23,6 +23,11 @@ const authRoutes: Routes = [
         component: ProductAddEditComponent,
         // data: { meta: { title: 'Login' } },
       },
+      {
+        path: ':id',
+        component: ProductAddEditComponent,
+        // data: { meta: { title: 'Login' } },
+      },
     ],
   },
 ];

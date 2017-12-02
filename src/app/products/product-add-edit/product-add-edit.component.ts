@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../shared/validators/custom-validators';
 import { DestroySubscribers } from 'ng2-destroy-subscribers';
 import { ProductService } from '../product.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @DestroySubscribers()
 @Component({
@@ -15,11 +15,15 @@ export class ProductAddEditComponent implements OnInit {
   form: FormGroup;
   submitted: boolean;
   subscribers: any = {};
+  routeId: number;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
-  constructor(private formBuilder: FormBuilder, private productService: ProductService, private router: Router) {
-
+  constructor(private formBuilder: FormBuilder,
+              private productService: ProductService,
+              private router: Router,
+              private activateRoute: ActivatedRoute) {
+    this.routeId = +activateRoute.snapshot.params.id;
   }
 
   ngOnInit() {
@@ -66,8 +70,6 @@ export class ProductAddEditComponent implements OnInit {
           filetype: file.type,
           base64: reader.result,
         });
-
-        console.log(this.form.get('image'));
       });
     }
   }
