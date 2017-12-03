@@ -44,7 +44,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  pageChange(page): void {
+  changePage(page: number): void {
     this.pagination = this.pagination.setPage(page);
     this.getProducts();
   }

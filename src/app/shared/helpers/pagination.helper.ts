@@ -1,4 +1,5 @@
 import * as queryString from 'querystring';
+import { range } from 'lodash';
 
 export class PaginationHelper {
   offset: number = 0;
@@ -31,6 +32,14 @@ export class PaginationHelper {
     if (this.getCurrentPage() * this.limit - this.count > this.limit) {
       this.setPage(Math.floor(this.count / this.limit) + 1);
     }
+  }
+
+  getCountPages() {
+    return Math.floor(this.count / this.limit) + 1;
+  }
+
+  getPagesRange() {
+    return range(this.getCountPages());
   }
 
   getParams(): any {
