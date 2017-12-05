@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { clone } from 'lodash';
+import { clone, without } from 'lodash';
 import { ProductModel } from '../product.model';
 import { SharedConstants } from '../../shared/shared.constant';
 import { PaginationHelper } from '../../shared/helpers/pagination.helper';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products, ProductService } from '../product.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-list',
@@ -19,7 +20,10 @@ export class ProductListComponent implements OnInit {
   ASSETS_URL: string = SharedConstants.ASSETS_URL;
   pagination: PaginationHelper = PaginationHelper.create();
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private productService: ProductService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private toastrService: ToastrService) {
     activatedRoute.queryParams.subscribe((data) => {
       this.pagination = this.pagination.setPage(data.page || 1);
       this.changeQuery();
@@ -54,4 +58,10 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['/products'], { queryParams });
   }
 
+  removeItem(product: ProductModel) {
+    this.productService.remove(product).subscribe((res: { data: string }) => {
+      this.toastrService.info(res.data);
+      this.products = without(this.products, product);
+    });
+  }
 }

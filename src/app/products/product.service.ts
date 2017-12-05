@@ -28,4 +28,8 @@ export class ProductService {
   create(data) {
     return this.http.post<{ data: ProductModel }>(`${ProductService.BASE_URL}/products`, convert2FormData(data));
   }
+
+  remove(data) {
+    return this.http.delete<{ data: string }>(`${ProductService.BASE_URL}/products/${data.id}`);
+  }
 }

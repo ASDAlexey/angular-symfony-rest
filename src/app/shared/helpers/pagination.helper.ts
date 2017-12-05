@@ -29,7 +29,7 @@ export class PaginationHelper {
 
   setCount(count): void {
     this.count = count;
-    if (this.getCurrentPage() * this.limit - this.count > this.limit) {
+    if (this.getCurrentPage() * this.limit - this.count >= this.limit) {
       this.setPage(Math.floor(this.count / this.limit) + 1);
     }
   }

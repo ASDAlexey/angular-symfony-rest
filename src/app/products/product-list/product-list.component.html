@@ -49,6 +49,8 @@
               <div>
                 <button
                   class="btn btn-danger delete"
+                  appConfirm
+                  (confirm-click)="removeItem(product)"
                 >
                   <i class="fa fa-remove"></i>
                   Delete
