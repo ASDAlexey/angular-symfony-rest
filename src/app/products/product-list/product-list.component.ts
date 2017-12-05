@@ -34,8 +34,8 @@ export class ProductListComponent implements OnInit {
     this.getProducts();
   }
 
-  getProducts() {
-    this.loading = true;
+  getProducts(disabledLoading = false) {
+    if (!disabledLoading) this.loading = true;
     this.productService.get(this.pagination.stringify()).subscribe((res: Products) => {
       this.products = res.data;
       this.count = res.meta.count;
@@ -48,9 +48,10 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  changePage(page: number): void {
+  changePage(page: number, disabledLoading = false): void {
     this.pagination = this.pagination.setPage(page);
-    this.getProducts();
+    this.getProducts(disabledLoading);
+    this.changeQuery();
   }
 
   changeQuery() {
@@ -62,6 +63,11 @@ export class ProductListComponent implements OnInit {
     this.productService.remove(product).subscribe((res: { data: string }) => {
       this.toastrService.info(res.data);
       this.products = without(this.products, product);
+
+      // case remove last product in page - redirect to previous page
+      if (this.products.length % this.pagination.limit === 0) {
+        this.changePage(this.pagination.getCurrentPage() - 1);
+      } else this.changePage(this.pagination.getCurrentPage(), true);
     });
   }
 }

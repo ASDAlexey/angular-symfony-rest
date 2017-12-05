@@ -62,7 +62,7 @@
             <td colspan="8">Products no found</td>
           </tr>
         </table>
-        <ul class="pagination" *ngIf="!loading">
+        <ul class="pagination" *ngIf="!loading && pagination.getCountPages()>1">
           <li class="page-item" [ngClass]="{'disabled':pagination.getCurrentPage() === 1}">
             <button
               class="page-link"
@@ -74,8 +74,8 @@
           </li>
           <li
             class="page-item"
-            *ngFor="let index of pagination.getPagesRange()"
             [ngClass]="{'active':index+1 === pagination.getCurrentPage()}"
+            *ngFor="let index of pagination.getPagesRange()"
           >
             <button class="page-link" (click)="changePage(index+1)">{{ index + 1 }}</button>
           </li>

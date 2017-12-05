@@ -35,7 +35,7 @@ export class PaginationHelper {
   }
 
   getCountPages() {
-    return Math.floor(this.count / this.limit) + 1;
+    return this.count % this.limit === 0 ? this.count / this.limit : Math.floor(this.count / this.limit) + 1;
   }
 
   getPagesRange() {
