@@ -4,6 +4,7 @@ import { SharedConstants } from '../shared/shared.constant';
 import { convert2FormData } from '../shared/helpers/get-form-data.helper';
 import { ProductModel } from './product.model';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 export interface Products {
   data: ProductModel[],
@@ -22,6 +23,13 @@ export class ProductService {
     return req.pipe(map((res: Products) => {
       const products = res.data.map(item => (ProductModel.create(item)));
       return { data: products, meta: res.meta };
+    }));
+  }
+
+  getById(id: number) {
+    const req = this.http.get<{ data: ProductModel }>(`${ProductService.BASE_URL}/products/${id}`);
+    return req.pipe(map((res: { data: ProductModel }) => {
+      return { data: ProductModel.create(res) };
     }));
   }
 

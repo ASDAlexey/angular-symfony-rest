@@ -4,6 +4,7 @@ import { CustomValidators } from '../../shared/validators/custom-validators';
 import { DestroySubscribers } from 'ng2-destroy-subscribers';
 import { ProductService } from '../product.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ProductModel } from '../product.model';
 
 @DestroySubscribers()
 @Component({
@@ -26,36 +27,47 @@ export class ProductAddEditComponent implements OnInit {
     this.routeId = +activateRoute.snapshot.params.id;
   }
 
-  ngOnInit() {
+  setForm(product: ProductModel = ProductModel.create()) {
     this.form = this.formBuilder.group({
-      name: ['', Validators.compose([
+      name: [product.name || '', Validators.compose([
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(210),
       ])],
-      price: ['', Validators.compose([
+      price: [product.price || '', Validators.compose([
         Validators.required,
         Validators.maxLength(60),
         CustomValidators.positive,
       ])],
-      description: ['', Validators.compose([
+      description: [product.description || '', Validators.compose([
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(255),
       ])],
-      color: ['', Validators.compose([
+      color: [product.color || '', Validators.compose([
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(255),
       ])],
-      year: ['', Validators.compose([
+      year: [product.year || '', Validators.compose([
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(4),
         CustomValidators.positive,
       ])],
-      image: null,
+      image: product.image ? { src: product.image } : '',
     });
+    console.log(this.form.value);
+  }
+
+  ngOnInit() {
+    if (this.routeId) {
+      this.subscribers.product = this.productService.getById(this.routeId)
+        .subscribe((res: { data: ProductModel }) => {
+          this.setForm(res.data);
+          this.subscribers.product.unsubscribe();
+        });
+    } else this.setForm();
   }
 
   onFileChange(event) {
@@ -82,6 +94,7 @@ export class ProductAddEditComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     if (this.form.valid) {
+      console.log(this.form.value);
       this.subscribers.products = this.productService.create(this.form.value).subscribe((res) => {
         this.submitted = false;
         this.form.reset();

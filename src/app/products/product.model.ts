@@ -1,7 +1,8 @@
+import { get } from 'lodash';
 import { AbstractModel } from '../shared/model/abstract.model';
 
 export class ProductModel extends AbstractModel {
-  id: number;
+  id?: number;
   name: string;
   price: string;
   description: string;
@@ -13,14 +14,14 @@ export class ProductModel extends AbstractModel {
 
   constructor(data) {
     super();
-    if (data.id) this.id = data.id;
-    this.name = data.name;
-    this.price = data.price;
-    this.description = data.description;
-    this.color = data.color;
-    this.year = data.year;
-    this.image = data.image;
-    this.updatedAt = data.updatedAt;
-    this.createdAt = data.createdAt;
+    if (get(data, 'id')) this.id = data.id;
+    this.name = get(data, 'name');
+    this.price = get(data, 'price');
+    this.description = get(data, 'description');
+    this.color = get(data, 'color');
+    this.year = get(data, 'year');
+    this.image = get(data, 'image');
+    this.updatedAt = get(data, 'updatedAt');
+    this.createdAt = get(data, 'createdAt');
   }
 }

@@ -4,7 +4,7 @@
       <a class="btn btn-primary float-right" [routerLink]="['/products']">Back</a>
       <h1 class="title">{{ routeId?'Edit product':'Create new product'}}</h1>
     </div>
-    <div class="col-sm-12">
+    <div class="col-sm-12" *ngIf="form">
       <form
         class="form"
         role="form"
@@ -49,8 +49,12 @@
           <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">
             Clear file
           </button>
-          <img *ngIf="form.get('image').value" [src]="form.get('image').value.base64"
-               alt="upload image" width="100">
+          <img
+            *ngIf="form.get('image').value"
+            [src]="form.get('image').value.base64 || 'https://api.symfony-rest.local/images/products/'+form.get('image').value.src"
+            alt="upload image"
+            width="100"
+          >
         </div>
         <div class="text-center form-group">
           <app-button>{{ routeId?'Save':'Create new product'}}</app-button>
