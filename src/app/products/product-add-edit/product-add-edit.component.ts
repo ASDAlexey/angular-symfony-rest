@@ -55,9 +55,8 @@ export class ProductAddEditComponent implements OnInit {
         Validators.maxLength(4),
         CustomValidators.positive,
       ])],
-      image: product.image ? { src: product.image } : '',
+      image: product.image ? { src: product.image } : null,
     });
-    console.log(this.form.value);
   }
 
   ngOnInit() {
@@ -94,12 +93,13 @@ export class ProductAddEditComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     if (this.form.valid) {
-      console.log(this.form.value);
-      this.subscribers.products = this.productService.create(this.form.value).subscribe((res) => {
-        this.submitted = false;
-        this.form.reset();
-        this.router.navigate(['/products']);
-      });
+      this.subscribers.products =
+        this.productService[this.routeId ? 'update' : 'create'](this.form.value, this.routeId)
+          .subscribe((res) => {
+            this.submitted = false;
+            this.form.reset();
+            this.router.navigate(['/products']);
+          });
     }
   }
 }

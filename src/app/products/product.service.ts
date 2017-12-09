@@ -33,8 +33,12 @@ export class ProductService {
     }));
   }
 
-  create(data) {
+  create(data, id = null) {
     return this.http.post<{ data: ProductModel }>(`${ProductService.BASE_URL}/products`, convert2FormData(data));
+  }
+
+  update(data, id) {
+    return this.http.post<{ data: ProductModel }>(`${ProductService.BASE_URL}/products/${id}`, convert2FormData(data));
   }
 
   remove(data) {
