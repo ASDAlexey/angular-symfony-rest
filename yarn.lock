@@ -3312,10 +3312,6 @@ ng2-destroy-subscribers@^0.0.28:
   version "0.0.28"
   resolved "https://registry.yarnpkg.com/ng2-destroy-subscribers/-/ng2-destroy-subscribers-0.0.28.tgz#bc43f3dff1c6095823c446fdeabb360b0700cd11"
 
-ngx-pagination@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-3.0.3.tgz#314145263613738d8c544da36cd8dacc5aa89a6f"
-
 ngx-toastr@^6.5.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-6.5.0.tgz#d6a528b3229bf3a4d570c0e7523a3391b87dc4ef"

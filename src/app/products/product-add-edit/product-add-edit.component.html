@@ -51,7 +51,7 @@
           </button>
           <img
             *ngIf="form.get('image').value"
-            [src]="form.get('image').value.base64 || 'https://api.symfony-rest.local/images/products/'+form.get('image').value.src"
+            [src]="form.get('image').value.base64 || API_URL+'/images/products/'+form.get('image').value.src"
             alt="upload image"
             width="100"
           >
