@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { AuthService } from '../../../shared/services/auth.service';
+import { AuthService } from '../../../auth/auth.service';
 import { UserModel } from '../../../auth/user.model';
 
 @Component({
@@ -12,8 +12,7 @@ import { UserModel } from '../../../auth/user.model';
 export class BlankLayoutComponent {
   user: UserModel;
 
-  constructor(private router: Router, public authService: AuthService) {
-    authService.getUser$().subscribe(res => (this.user = res));
+  constructor(private router: Router) {
     document.querySelector('.preloader').classList.add('loaded');
   }
 }

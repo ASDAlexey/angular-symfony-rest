@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductAddEditComponent } from './product-add-edit/product-add-edit.component';
+import { ProductService } from './product.service';
 
 const modules = [
   CommonModule,
@@ -10,10 +12,13 @@ const modules = [
   ProductsRoutingModule,
 ];
 
-const services = [];
+const services = [
+  ProductService,
+];
 
 const components = [
   ProductListComponent,
+  ProductAddEditComponent,
 ];
 
 @NgModule({

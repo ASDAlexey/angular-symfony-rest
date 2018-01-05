@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <a class="btn btn-primary float-right" [routerLink]="['/products']">Back</a>
+      <h1 class="title">{{ routeId?'Edit product':'Create new product'}}</h1>
+    </div>
+    <div class="col-sm-12" *ngIf="form">
+      <form
+        class="form"
+        role="form"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        [ngClass]="{submited:submitted}"
+      >
+        <app-input
+          [form]="form"
+          [submitted]="submitted"
+          control="name"
+          label="Name"
+        ></app-input>
+        <app-input
+          [form]="form"
+          [submitted]="submitted"
+          control="price"
+          label="Price"
+          maxLength="20"
+        ></app-input>
+        <app-input
+          [form]="form"
+          [submitted]="submitted"
+          control="description"
+          label="Description"
+        ></app-input>
+        <app-input
+          [form]="form"
+          [submitted]="submitted"
+          control="color"
+          label="Color"
+        ></app-input>
+        <app-input
+          [form]="form"
+          [submitted]="submitted"
+          control="year"
+          label="Year"
+        ></app-input>
+        <div class="form-group">
+          <label>Image</label>
+          <input type="file" (change)="onFileChange($event)" #fileInput>
+          <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">
+            Clear file
+          </button>
+          <img
+            *ngIf="form.get('image').value"
+            [src]="form.get('image').value.base64 || 'https://api.symfony-rest.local/images/products/'+form.get('image').value.src"
+            alt="upload image"
+            width="100"
+          >
+        </div>
+        <div class="text-center form-group">
+          <app-button>{{ routeId?'Save':'Create new product'}}</app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

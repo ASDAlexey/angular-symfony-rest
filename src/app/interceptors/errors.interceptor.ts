@@ -11,8 +11,6 @@ import 'rxjs/add/operator/do';
 import { ToastrService } from 'ngx-toastr';
 import * as _ from 'lodash';
 
-// import { AuthService } from '../auth/services/auth.service';
-
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 const enum HttpErrors {
   BadRequest = 400,
@@ -27,9 +25,9 @@ export class ErrorsInterceptor implements HttpInterceptor {
 
   errorHandler(errRes, statuses: [number]) {
     if (errRes instanceof HttpErrorResponse && statuses.indexOf(errRes.status) !== -1) {
-      if (errRes.status === HttpErrors.Unauthorized) {
-        this.toastrService.error(_.get(errRes, 'error.errors'));
-      } else return errRes;
+      const error = _.get(errRes, 'error.errors.children');
+      const key = Object.keys(error)[0];
+      this.toastrService.error(_.get(error[key], 'errors[0]'));
     }
   }
 

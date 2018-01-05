@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { SharedConstants } from '../shared/shared.constant';
 import { map } from 'rxjs/operators';
-import { SharedConstants } from '../shared.constant';
-import { UserModel } from '../../auth/user.model';
+import { UserModel } from './user.model';
 import { Subject } from 'rxjs/Subject';
 
 interface Auth {
