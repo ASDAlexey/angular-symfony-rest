@@ -5,6 +5,7 @@ import { DestroySubscribers } from 'ng2-destroy-subscribers';
 import { ProductService } from '../product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductModel } from '../product.model';
+import { SharedConstants } from '../../shared/shared.constant';
 
 @DestroySubscribers()
 @Component({
@@ -17,6 +18,7 @@ export class ProductAddEditComponent implements OnInit {
   submitted: boolean;
   subscribers: any = {};
   routeId: number;
+  API_URL: string;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
@@ -25,6 +27,7 @@ export class ProductAddEditComponent implements OnInit {
               private router: Router,
               private activateRoute: ActivatedRoute) {
     this.routeId = +activateRoute.snapshot.params.id;
+    this.API_URL = SharedConstants.API_URL;
   }
 
   setForm(product: ProductModel = ProductModel.create()) {
