@@ -49,6 +49,6 @@ export class CustomValidators {
   }
 
   static positive(c: FormControl): { [s: string]: boolean } {
-    return c.value && +parseFloat(c.value).toFixed(2) > 0 ? null : { positive: true };
+    return c.value && +parseFloat(c.value).toFixed(2) > 0 && c.value.toString().match(/^\d+$/) ? null : { positive: true };
   }
 }
