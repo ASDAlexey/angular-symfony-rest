@@ -23,7 +23,7 @@ export class PaginationHelper {
   }
 
   setPage(page): PaginationHelper {
-    this.offset = (page - 1) * this.limit;
+    this.offset = page > 0 ? (page - 1) * this.limit : 0;
     return this;
   }
 
